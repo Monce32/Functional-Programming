@@ -1,6 +1,5 @@
 ;Moncerrat Romero
 ;Functional Programming
-;Help received from: Elie, Dary
 
 (define vecadd
 	(lambda (x y)
