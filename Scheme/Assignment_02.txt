@@ -1,0 +1,25 @@
+Create a Scala web server. You only need to serve static HTML documents from the directory in which your program is run.
+ If there is a request to a file that doesn't exist, return an appropriate 404 error message. 
+You don't need to thread this implementation. You can use the java.net.URL and associated classes to help parse queries. 
+Use ScalaTest http://www.scalatest.org/ and ScalaMock http://www.scalatest.org/user_guide/testing_with_mock_objects 
+to test your program. Here is a simple echo server in Scala.
+
+import java.net._
+import java.io._
+import scala.io._
+
+object EchoServer {
+    def main(args: Array[String]) {
+        val server = new ServerSocket(9999)
+        while (true) {
+            val s = server.accept()
+            val in = new BufferedSource(s.getInputStream()).getLines()
+            val out = new PrintStream(s.getOutputStream())
+
+            out.println(in.next())
+            out.flush()
+            s.close()
+        }
+    }
+}
+
